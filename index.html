@@ -1,37 +1,389 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>晨曦精品咖啡 · Sunlit Coffee — 捕捉每一縷陽光的溫度</title>
+  <meta name="description" content="晨曦精品咖啡，專注於提供明亮、純粹的單品咖啡，為你的早晨注入滿滿的陽光與活力。">
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; max-width: 100%; }
-    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", Arial, sans-serif; line-height: 1.6; }
-    img { max-width: 100%; height: auto; display: block; }
-    .container { width: 1920px; margin: 0 auto; padding: 16px; }
-    nav a { margin-right: 12px; text-decoration: none; }
-    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
-    .col-12 { grid-column: span 12; }
-    @media (min-width: 768px) { .col-md-6 { grid-column: span 6; } }
-    .card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+
+    /* ============================================================ */
+    /* CSS:BASE-START                                                */
+    /* ============================================================ */
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      /* 陽光感配色方案 */
+      --color-bg:        #fffdf5; /* 溫暖奶油白（陽光感背景） */
+      --color-bg-2:      #fff9e6; /* 淺檸檬黃（次要背景） */
+      --color-bg-card:   #ffffff;
+      --color-primary:   #f9a825; /* 蜂蜜金（主色調） */
+      --color-primary-d: #f57f17;
+      --color-accent:    #9ccc65; /* 嫩葉綠（點綴色，象徵朝氣） */
+      --color-text:      #4e342e; /* 烘焙深棕（文字，確保易讀性） */
+      --color-muted:     #8d6e63; /* 淺咖啡棕（輔助文字） */
+      --color-border:    #fcefb4;
+      --color-header-bg: rgba(255, 253, 245, 0.9);
+
+      --font-display: 'Palatino Linotype', 'Book Antiqua', Palatino, 'Noto Serif TC', serif;
+      --font-body:    'Segoe UI', 'Helvetica Neue', 'Noto Sans TC', Helvetica, Arial, sans-serif;
+      --font-mono:    'Cascadia Code', 'Fira Code', monospace;
+
+      --radius:    6px;
+      --radius-lg: 20px;
+      --shadow:    0 10px 40px rgba(249, 168, 37, 0.1);
+      --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+      --container-max: 1100px;
+      --container-px:  1.5rem;
+      --section-py:    6rem;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-radius: var(--radius);
+    }
+
+    a {
+      color: var(--color-primary-d);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    a:hover {
+      color: var(--color-accent);
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin-inline: auto;
+      padding-inline: var(--container-px);
+    }
+
+    .section {
+      padding-block: var(--section-py);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .section-subtitle {
+      color: var(--color-muted);
+      font-size: 1.1rem;
+      margin-bottom: 4rem;
+      max-width: 60ch;
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-primary-d);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.8rem 2rem;
+      border-radius: 50px; /* 圓潤感更有親和力 */
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all var(--transition);
+      letter-spacing: 0.05em;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-d);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 12px 24px rgba(249, 168, 37, 0.25);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--color-primary);
+      color: var(--color-primary-d);
+    }
+
+    .btn-outline:hover {
+      background: var(--color-primary);
+      color: #ffffff;
+    }
+
+    /* ============================================================ */
+    /* CSS:NAV                                                       */
+    /* ============================================================ */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--color-header-bg);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-text);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-logo span {
+      color: var(--color-primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--color-muted);
+      transition: color var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--color-primary-d);
+    }
+
+    /* ============================================================ */
+    /* CSS:HERO                                                      */
+    /* ============================================================ */
+
+    .section-hero {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* 陽光光暈視覺效果 */
+    .section-hero::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      right: -5%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(249, 168, 37, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .hero-grid { grid-template-columns: 1.2fr 0.8fr; }
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      color: var(--color-text);
+    }
+
+    .hero-title-highlight {
+      color: var(--color-primary);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-description {
+      color: var(--color-muted);
+      font-size: 1.15rem;
+      margin-bottom: 2.5rem;
+      max-width: 500px;
+    }
+
+    .hero-image-wrap {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 20px 20px 60px #e6e4dc, -20px -20px 60px #ffffff;
+    }
+
+    /* ============================================================ */
+    /* CSS:MENU CARDS                                                */
+    /* ============================================================ */
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .menu-card {
+      background: var(--color-bg-card);
+      padding: 2.5rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .menu-card:hover {
+      border-color: var(--color-primary);
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(249, 168, 37, 0.12);
+    }
+
+    .menu-card h3 {
+      color: var(--color-text);
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+    }
+
+    .menu-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    /* ============================================================ */
+    /* CSS:FOOTER                                                    */
+    /* ============================================================ */
+
+    .site-footer {
+      padding: 4rem 0;
+      background: var(--color-bg-2);
+      text-align: center;
+      border-top: 1px solid var(--color-border);
+    }
+
   </style>
 </head>
 <body>
-  <header class="container" role="banner">
-    <nav aria-label="主選單">
-      <a href="#about">關於我</a>
-      <a href="#projects">作品集</a>
-      <a href="https://example.com/blog">技術部落格</a>
-      <a href="mailto:me@example.com">聯絡我</a>
-    </nav>
-    <h1>你好，我是小明：前端工程師新手之路</h1>
-    <h1>你好，我是小明：前端工程師新手之路</h1>
-    <p>歡迎來到我的個人網站！這裡整理了學習紀錄、Side Project 與實作心得。</p>
+
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav">
+        <a class="nav-logo" href="#">晨曦咖啡<span>.</span>Sunlit</a>
+        <ul class="nav-links">
+          <li><a class="nav-link" href="#hero">美好開始</a></li>
+          <li><a class="nav-link" href="#menu">本日豆單</a></li>
+          <li><a class="nav-link" href="#contact">預約暖陽</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <footer class="container" role="contentinfo">
-    <p>© 2025 My Portfolio · <a href="#">GitHub</a></p>
-    <img src="https://source.unsplash.com/600x200/?technology,abstract" alt="">
+  <main>
+    <section id="hero" class="section section-hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <span class="section-eyebrow">Good Morning, Coffee Lover</span>
+            <h1 class="hero-title">
+              用一杯咖啡<br>
+              <span class="hero-title-highlight">喚醒你的陽光心情</span>
+            </h1>
+            <p class="hero-description">
+              我們在清晨的第一縷陽光中烘焙，只為將豆子最明亮的風味送達你的杯中。感受純粹、清爽且充滿活力的味覺體驗。
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#menu">探索清晨風味</a>
+              <a class="btn btn-outline" href="#contact">來店坐坐</a>
+            </div>
+          </div>
+          <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1507133750040-4a8f57021571?w=800&q=80" alt="陽光下的咖啡杯">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu" class="section">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 4rem;">
+          <span class="section-eyebrow">Our Roast</span>
+          <h2 class="section-title">今日陽光推薦</h2>
+          <p class="section-subtitle" style="margin-inline: auto;">挑選幾款最適合在晴朗日子裡品嚐的淺焙與中焙豆款。</p>
+        </div>
+        
+        <div class="menu-grid">
+          <div class="menu-card">
+            <span class="menu-icon">☀️</span>
+            <h3>晨曦特調配方</h3>
+            <p>淺中焙 | 帶有明亮的葡萄柚酸甜感與蜂蜜餘韻，口感輕盈順口。</p>
+          </div>
+          <div class="menu-card">
+            <span class="menu-icon">🌱</span>
+            <h3>肯亞 AA 單品</h3>
+            <p>淺焙 | 經典的小紅莓與黑醋栗風味，像是果汁般的清爽層次。</p>
+          </div>
+          <div class="menu-card">
+            <span class="menu-icon">🍯</span>
+            <h3>薩爾瓦多 蜜處理</h3>
+            <p>中焙 | 濃郁的紅糖甜感與堅果香氣，如午後暖陽般溫厚。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p style="color: var(--color-muted); font-size: 0.9rem;">
+        © 2026 晨曦精品咖啡 Sunlit Coffee — 願你的每一天都充滿溫暖陽光。
+      </p>
+    </div>
   </footer>
+
 </body>
 </html>
