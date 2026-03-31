@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>晨曦精品咖啡 — 捕捉每一縷陽光的溫度</title>
-  <meta name="description" content="晨曦精品咖啡，專注於提供明亮、純粹的單品咖啡，為你的早晨注入滿滿的陽光與活力。">
+  <meta name="description" content="晨曦精品咖啡，專注於提供明亮、純粹的單品咖啡，為你的早晨注入滿滿的陽光與活力。讓我們一起探索清晨的風味，用一杯咖啡喚醒你的陽光心情，開啟美好的一天。">
 
   <style>
 
@@ -264,7 +264,8 @@
 
     .menu-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      /* 修改點 3: 減小 minmax 的最小值 (300px -> 280px) 以防止在 320px 螢幕上溢出 */
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 2rem;
     }
 
@@ -313,7 +314,7 @@
   <header class="site-header">
     <div class="container">
       <nav class="nav">
-        <a class="nav-logo" href="#">晨曦咖啡<span>.</span>Sunlit</a>
+        <a class="nav-logo" href="#hero">晨曦咖啡<span>.</span>Sunlit</a>
         <ul class="nav-links">
           <li><a class="nav-link" href="#hero">美好開始</a></li>
           <li><a class="nav-link" href="#menu">本日豆單</a></li>
